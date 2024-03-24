@@ -1,14 +1,5 @@
-    //const promptInput = prompt("Please enter");
-//const myprompt =  require("prompt-sync")({ sigint: true });
-const grade = prompt("Enter Your Grade: ");
-userGrade(grade);
-
-//var holds the user input
-// A > 79, B - 60 to 79, C -  49 to 59, D - 40 to 49, E - less 40.
-//function(userInput)
-//verify if 0-100
-//if
-//return userGrade
+const marks = prompt("Enter Your Marks: ");
+userGrade(marks);
 function userGrade(userInput){
     let finalGrade = "E";
         if(userInput >= 0 && userInput < 40){ //from zero to 39
@@ -21,6 +12,8 @@ function userGrade(userInput){
             finalGrade = "B";
         }else if(userInput > 79 && userInput <= 100){
         finalGrade = "A";
+        }else{
+            finalGrade = "Is Invalid.";
         }
-       document.getElementById("response").innerHTML = finalGrade;
+       document.getElementById("response").innerHTML = `Grade: <i> ${finalGrade}</i>`;
 } 
