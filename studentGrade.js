@@ -20,5 +20,5 @@ function userGrade(marks){
         }else{ // ELSE statments conclude for a value not ranging from the if statments hence return invalid
             finalGrade = "Is Invalid.";
         }
-       document.getElementById("response").innerHTML = `Grade: <i> ${finalGrade}</i>`; // this code of line will print on the html page
+       document.getElementById("app").innerHTML = `Grade: <i> ${finalGrade}</i>`; // this code of line will print on the html page
 } 
