@@ -1,4 +1,4 @@
-// for this to un youll open on your browser neetSalary.html and youll be immedietl be prompted for two inputs then youl receive respose calculated
+// for this to run youll open on your browser neetSalary.html and youll be immedietl be prompted for two inputs then youl receive respose calculated
 const basicSalary = prompt("Provide Your Basic Salary..");
 const benefits = prompt("Provide Your Benefits..");
 
