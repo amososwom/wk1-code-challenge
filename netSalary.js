@@ -1,41 +1,17 @@
+// for this to un youll open on your browser neetSalary.html and youll be immedietl be prompted for two inputs then youl receive respose calculated
+const basicSalary = prompt("Provide Your Basic Salary..");
+const benefits = prompt("Provide Your Benefits..");
 
-function show(value){
-    console.log(value);
-}
+kratax(basicSalary, benefits);
 
-// 
-
-//output = tax
-
-//output = NHIFDeductions
-
-//output = NSSFDeductions
-
-//output = Gross salary
-
-//output = Net Salary
-/*
-
-gross salary = 75000
-nssf = (75000 * 0.06) = 4500
-nhif = 1400 //(1400 * 0.15) = 210 * 
-
-75000 - (nssf + nhif)
-let taxableIncome = 75000 - (nssf + nhif)5900 //69100
-let payee = tax(taxableIncome).paye
-let net salary = tax(taxableIncome).netsalary
-
-NSSFDeductions = 4500
-NHIFDeduction s = 1400
-payee (i.e. Tax) = 51186.65 // tax.paye
-gross salary = 75000
-net salary = 17913.35 // tax.netsalary
-*/
-
+// this function will run when a user provides his or her values
 function kratax(basicSalary, benefits){
     let nssf = 0;
     let nhif = 0;
+    let app = document.getElementById("app") ; // this is the id of the div where i want to show my response
 
+
+    // this funtion outputs the nssf , nhif and taxableincome when called
     function benefitsfunction(basicSalary, benefits = 0){
         let  nhifDeduction = 0
      
@@ -97,16 +73,9 @@ function kratax(basicSalary, benefits){
          else if (basicSalary >= 100000){
            nhifDeduction =1700
          }
-     
-         // nssf = (benefit > 0 ) ? benefit : basicSalary * 0.06;
-     
-         if(benefits > 0){
-             nssf = benefits;
-         }else{
-             nssf = basicSalary * 0.06;
-         }
-     
-         nhif = nhifDeduction;
+     // this code checks if there is a value for benefits that is greater than 0 then returns benefits as nssf else will calculate the nssf
+         nssf = (benefits > 0 ) ? benefits : basicSalary * 0.06; 
+         nhif = nhifDeduction; //nhif is difined from the if statments
          taxableIncome = basicSalary - (nssf + nhif);
              return{
                  nssf,
@@ -114,14 +83,14 @@ function kratax(basicSalary, benefits){
                  taxableIncome, 
              }
     }    
-
+// the below function is used to calculate theh taxabaleincome after eveluated fro bene fits
     function tax(taxableIncome){
     let paye = 0;
     let grossTax = 0;
     let rated = 0; 
     let personalRelief = 0;
 
-    if(taxableIncome > 0 && taxableIncome <= 24000){
+    if(taxableIncome > 0 && taxableIncome <= 24000){ //taxe are calculated depending on where taxableincome will fall
         grossTax = (taxableIncome*0.10);
     }else if (taxableIncome >= 24001 && taxableIncome <= 32333){
         rated = (taxableIncome - 24000) * 0.25;
@@ -141,18 +110,23 @@ function kratax(basicSalary, benefits){
     return { paye, netsalary } 
     }
     
-    let myTaxableIncome  = benefitsfunction(basicSalary,benefits);
-    let taxed = tax(myTaxableIncome.taxableIncome);
+    let myTaxableIncome  = benefitsfunction(basicSalary,benefits); //this block will hold the response benefitsfunction
+    let taxed = tax(myTaxableIncome.taxableIncome); //this block will hold the response tax
 
+    //this block will output to the htmlpage
+    app.innerHTML = `
+    <span>NSSFDeductions: <i>${myTaxableIncome.nssf}</i></span>
+    <span>NHIFDeductions: <i>${myTaxableIncome.nhif}</i></span>
+    <span>Tax: <i>${taxed.paye}</i></span>
+    <span>Gross Salary: <i>${basicSalary}</i></span>
+    <span>Net Salary: <i>${taxed.netsalary}</i></span>`;
+
+    //this block will return a fully combination of the code
     return {
-        NSSFDeductions:  Number(myTaxableIncome.nssf),
+        NSSFDeductions:  myTaxableIncome.nssf,
         NHIFDeductions:  myTaxableIncome.nhif,
-        payee:  taxed.paye,
+        tax:  taxed.paye,
         grosssalary:  basicSalary,
         netsalary:  taxed.netsalary
     }
 }
-
-
-
-show(kratax(5000))
