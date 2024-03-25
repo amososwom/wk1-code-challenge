@@ -121,7 +121,7 @@ function kratax(basicSalary, benefits){
     <span>Gross Salary: <i>${basicSalary}</i></span>
     <span>Net Salary: <i>${taxed.netsalary}</i></span>`;
 
-    //this block will return a fully combination of the code
+    //this block will return a fully combination of the code.
     return {
         NSSFDeductions:  myTaxableIncome.nssf,
         NHIFDeductions:  myTaxableIncome.nhif,
