@@ -21,4 +21,6 @@ function userGrade(marks){
             finalGrade = "Is Invalid.";
         }
        document.getElementById("app").innerHTML = `Grade: <i> ${finalGrade}</i>`; // this code of line will print on the html page
+
+       return finalGrade;
 } 
